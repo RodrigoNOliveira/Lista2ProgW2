@@ -1,0 +1,46 @@
+doctype html 
+head 
+    title= nome
+    style   
+        include estilo.css
+body 
+
+    div.corpo
+        
+        div.titulo
+            h1#titulo=nome
+        div.message
+            p Genero: #{generos} 
+            p Quantidade de episodios: #{num_episodios}
+            p Quantidade de temporadas: #{num_temporadas}
+            img(src=fotoBg, alt="Foto da serie", width="50%")
+            img(src=fotoPoster, alt="Poster da serie", width="50%")
+            p Nota da serie: #{nota}
+            p= resumo 
+            
+        div.elenco
+            div.des
+                h1 Elenco
+            div.galeria
+                
+                each el in elenco
+                    div.pessoa
+                        p Nome: #{el.nome} 
+                        p Personagem: #{el.personagem}
+                        img(src=el.foto, alt="foto do personagem")
+        div.temporadas
+            h1 Temporadas
+            each temp in temporadas 
+                div.temp 
+                    div.desc
+                        p Temporada #{temp.numero}
+                        p Numero de episodios: #{temp.numero_episodios}
+                        p Exibição: #{temp.exibicao}
+                        img(src=temp.poster, alt="Poster da temporada")
+                    each eps in temp.episodios
+                        div.cap 
+                            p Episodio #{eps.numero}
+                            p Nome: #{eps.nome}
+                            p Nota: #{eps.nota}
+                            img(src=eps.foto, alt="foto do episodio")
+                            p= resumo
